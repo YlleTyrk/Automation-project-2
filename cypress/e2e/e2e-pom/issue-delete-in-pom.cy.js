@@ -14,34 +14,19 @@ describe('Issue delete', () => {
       });
   });
 
-  //issue title, that we are testing with, saved into variable
   const issueTitle = 'This is an issue of type: Task.';
-  const issueDetailModal = '[data-testid="modal:issue-details"]';
-  const deleteButton = '[data-testid="icon:trash"]';
-  const confirmationPopup = '[data-testid="modal:confirm"]';
-  const deleteButtonName = 'Delete issue';
-  
 
   it('Should delete issue successfully', () => {
-    cy.get(issueDetailModal).should('be.visible');
-    cy.get(deleteButton).click();
-    cy.get(confirmationPopup).should('be.visible');
-    cy.get(confirmationPopup).within(() => {
-      cy.contains(deleteButtonName).click();
-     cy.get(confirmationPopup).should('not.exist');
-     
-      
-    });
+    IssueModal.clickDeleteButton();
+    IssueModal.confirmDeletion();
+    IssueModal.validateIssueVisibilityState(issueTitle, false);
   });
 
   it('Should cancel deletion process successfully', () => {
-    cy.get(issueDetailModal).should('be.visible');
-    cy.get(deleteButton).click();
-    cy.get(confirmationPopup).should('be.visible');
-    cy.get(confirmationPopup).within(() => {
-      cy.contains(cancelDeletionButtonName).click();
-      cy.get(confirmationPopup).should('not.exist')
-
-    })
-  })
+    IssueModal.ensureIssueIsVisibleOnBoard;
+    IssueModal.clickDeleteButton();
+    IssueModal.cancelDeletion();
+    IssueModal.closeDetailModal();
+    IssueModal.validateIssueVisibilityState;
+  });
 });
