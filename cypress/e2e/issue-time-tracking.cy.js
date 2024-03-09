@@ -82,7 +82,7 @@ it('Should create new issue, add, edit and remove time spent', () => {
     // Wait for the issue details modal to be visible
     cy.reload();
     cy.wait(30000);
-    cy.get('[data-testid="list-issue"]').eq(0).click();git
+    cy.get('[data-testid="list-issue"]').eq(0).click()
 
     //ADD spent time
 
